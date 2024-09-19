@@ -1,0 +1,46 @@
+[gd_scene load_steps=6 format=3 uid="uid://dkj1a4yu20alh"]
+
+[ext_resource type="Script" path="res://inflinko.gd" id="1_0w3c2"]
+[ext_resource type="Texture2D" uid="uid://bdekg5yrmmrp4" path="res://plinko.jpg" id="2_jtpvt"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_e8140"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hqw7y"]
+size = Vector2(5, 800)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_51ja1"]
+size = Vector2(500, 5)
+
+[node name="Course" type="Node2D"]
+script = ExtResource("1_0w3c2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(252.833, 398.5)
+scale = Vector2(0.346991, 0.741667)
+texture = ExtResource("2_jtpvt")
+
+[node name="Walls" type="StaticBody2D" parent="."]
+collision_mask = 0
+physics_material_override = SubResource("PhysicsMaterial_e8140")
+
+[node name="LeftWall" type="CollisionShape2D" parent="Walls"]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(-2.5, 400)
+shape = SubResource("RectangleShape2D_hqw7y")
+debug_color = Color(0.956863, 0.0784314, 0.478431, 0.815686)
+
+[node name="RightWall" type="CollisionShape2D" parent="Walls"]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(502.5, 400)
+shape = SubResource("RectangleShape2D_hqw7y")
+debug_color = Color(0.956863, 0.0784314, 0.478431, 0.815686)
+
+[node name="Bottom" type="CollisionShape2D" parent="Walls"]
+modulate = Color(1, 0, 0, 1)
+position = Vector2(250, 800)
+shape = SubResource("RectangleShape2D_51ja1")
+debug_color = Color(0.956863, 0.0784314, 0.478431, 0.815686)
+
+[node name="Pegs" type="Node2D" parent="."]
+
+[node name="Discs" type="Node2D" parent="."]
